@@ -1,0 +1,226 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+ * Semantic color system — Linear / Vercel-inspired.
+ * Light mode is the default; `.dark` on <html> swaps tokens.
+ */
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222 47% 11%;
+    --surface: 0 0% 100%;
+
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 40%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+
+    --border: 216 19% 90%;
+    --input: 216 19% 90%;
+    --ring: 224 64% 54%;
+
+    --primary: 224 64% 54%;
+    --primary-foreground: 0 0% 100%;
+
+    --accent: 258 55% 55%;
+    --accent-foreground: 0 0% 100%;
+  }
+
+  .dark {
+    --background: 222 39% 5%;
+    --foreground: 210 40% 98%;
+    --surface: 222 32% 8%;
+
+    --muted: 217 30% 11%;
+    --muted-foreground: 215 16% 65%;
+
+    --card: 222 32% 8%;
+    --card-foreground: 210 40% 98%;
+
+    --border: 217 25% 16%;
+    --input: 217 25% 16%;
+    --ring: 224 64% 64%;
+
+    --primary: 224 72% 68%;
+    --primary-foreground: 222 47% 11%;
+
+    --accent: 258 70% 72%;
+    --accent-foreground: 222 47% 11%;
+  }
+
+  * {
+    border-color: hsl(var(--border));
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /*
+   * Smooth theme switching across the whole site.
+   *
+   * The `.theme-ready` class is added by an inline script in index.html
+   * after the first paint, so the initial render doesn't animate from
+   * defaults. Targeted properties only — transforms and opacity (driven
+   * by Framer Motion) stay snappy and untouched.
+   *
+   * Element-level Tailwind utilities like `transition-colors` win on
+   * specificity, so hover effects keep their own (shorter) durations.
+   */
+  html.theme-ready,
+  html.theme-ready *,
+  html.theme-ready *::before,
+  html.theme-ready *::after {
+    transition-property: background-color, border-color, color, fill, stroke,
+      box-shadow, outline-color, text-decoration-color;
+    transition-duration: 320ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Respect reduced-motion preferences. */
+  @media (prefers-reduced-motion: reduce) {
+    html.theme-ready,
+    html.theme-ready *,
+    html.theme-ready *::before,
+    html.theme-ready *::after {
+      transition-duration: 0ms !important;
+    }
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    overflow-x: hidden;
+    font-feature-settings: 'cv11', 'ss01';
+  }
+
+  ::selection {
+    background: hsl(var(--primary) / 0.2);
+    color: hsl(var(--foreground));
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--border));
+    border-radius: 999px;
+    border: 2px solid hsl(var(--background));
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--muted-foreground) / 0.4);
+  }
+}
+
+@layer components {
+  /* Clean surface */
+  .surface {
+    @apply bg-card border border-border rounded-xl;
+  }
+
+  /* Navbar glass — subtle, professional */
+  .nav-glass {
+    background: hsl(var(--background) / 0.72);
+    backdrop-filter: saturate(180%) blur(18px);
+    -webkit-backdrop-filter: saturate(180%) blur(18px);
+    border: 1px solid hsl(var(--border));
+  }
+
+  /* Primary button — understated solid fill, no aggressive gradient */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 h-10 px-4 rounded-lg text-sm font-medium
+           bg-foreground text-background
+           hover:opacity-90 active:opacity-95
+           transition-opacity duration-150
+           focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background;
+  }
+
+  /* Secondary button — outline */
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 h-10 px-4 rounded-lg text-sm font-medium
+           bg-transparent text-foreground
+           border border-border
+           hover:bg-muted
+           transition-colors duration-150
+           focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background;
+  }
+
+  /* Ghost / icon button */
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg text-sm font-medium
+           text-muted-foreground hover:text-foreground hover:bg-muted
+           transition-colors duration-150
+           focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring;
+  }
+
+  /* Tiny pill label (used above section titles) */
+  .eyebrow {
+    @apply inline-flex items-center gap-2 text-[11px] font-medium uppercase tracking-[0.18em]
+           text-muted-foreground;
+  }
+  .eyebrow::before {
+    content: '';
+    @apply inline-block h-px w-6 bg-border;
+  }
+
+  /* Chip */
+  .chip {
+    @apply inline-flex items-center gap-1.5 h-7 px-2.5 rounded-md text-xs font-medium
+           bg-muted text-foreground/80 border border-border;
+  }
+
+  /* Card */
+  .card {
+    @apply relative rounded-xl border border-border bg-card
+           transition-colors duration-200;
+  }
+
+  .card-hover {
+    @apply hover:border-foreground/20;
+  }
+
+  /* Subtle gradient text — used sparingly */
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(
+      100deg,
+      hsl(var(--primary)) 0%,
+      hsl(var(--accent)) 100%
+    );
+  }
+
+  /* Section heading structure */
+  .section-title {
+    @apply font-display text-3xl sm:text-4xl md:text-[2.75rem] font-semibold tracking-tight leading-[1.15];
+  }
+
+  /* Divider */
+  .hr {
+    @apply h-px w-full bg-border;
+  }
+}
+
+@layer utilities {
+  /* Fade mask for background grid */
+  .mask-radial {
+    -webkit-mask-image: radial-gradient(ellipse 60% 50% at 50% 30%, #000 30%, transparent 80%);
+    mask-image: radial-gradient(ellipse 60% 50% at 50% 30%, #000 30%, transparent 80%);
+  }
+
+  .mask-bottom-fade {
+    -webkit-mask-image: linear-gradient(to bottom, #000 60%, transparent 100%);
+    mask-image: linear-gradient(to bottom, #000 60%, transparent 100%);
+  }
+}
