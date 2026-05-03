@@ -114,7 +114,7 @@ export default function Hero() {
                 className={cn(
                   'absolute inset-0 h-full w-full object-cover object-top select-none',
                   // Zoom + top-anchor so the head/shoulders fill the frame.
-                  isTransparent ? 'scale-[1.35]' : 'scale-100',
+                  isTransparent ? 'scale-[1.05]' : 'scale-100',
                   // Subtle contrast/saturation lift + grounding shadow on the subject.
                   isTransparent &&
                     '[filter:contrast(1.04)_saturate(1.06)] drop-shadow-[0_10px_16px_rgba(0,0,0,0.35)] dark:drop-shadow-[0_12px_22px_rgba(0,0,0,0.6)]',
