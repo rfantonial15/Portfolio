@@ -28,9 +28,9 @@ export interface SuggestedPrompt {
 export const suggestedPrompts: SuggestedPrompt[] = [
   { label: '👋 Who is Randulf?', prompt: 'Who is Randulf?' },
   { label: '💼 Show me your projects', prompt: 'Tell me about your projects' },
+  { label: '🤖 Tell me about AIDA', prompt: 'Tell me about Automated Incident Detection' },
   { label: '🛠 What can you build?', prompt: 'What technologies do you work with?' },
   { label: '🏆 Awards & wins', prompt: 'What awards have you won?' },
-  { label: '🎓 Your education', prompt: 'Tell me about your education' },
   { label: '📬 How can I hire you?', prompt: 'How do I contact you?' },
 ];
 
@@ -45,7 +45,7 @@ export const knowledge: KnowledgeEntry[] = [
     id: 'identity',
     keywords: ['who', 'you', 'your name', 'name', 'introduce', 'about', 'yourself', 'randulf'],
     answer:
-      "I'm Randulf's AI assistant 🤖 — happy to answer anything about him.\n\n**Randulf Fantonial** is a Full Stack Developer and **Cum Laude BS Information Technology** graduate from **USTP** (2025). He builds polished, production-ready products with **React, React Native, Django, and Flutter** — and his capstone, **Automated Incident Detection and Assistance**, won **Best Capstone Project** and is now evolving into a startup focused on disaster response.",
+      "I'm Randulf's AI assistant 🤖 — happy to answer anything about him.\n\n**Randulf Fantonial** is a Full Stack Developer and **Cum Laude BSIT** graduate from **USTP** (2025), now **co-founding AIDA** — a real-time AI incident-response platform that won **Best Capstone Project**, took **1st Place at SEA-CICSIC 2025** (Southeast Asia division), and earned a **₱100,000 incubation grant**. He builds production web and mobile products end-to-end with **React, React Native, Django, and PostgreSQL**.",
     followUps: ['What have you built?', 'What is your strongest stack?', 'Where are you based?'],
   },
   {
@@ -80,11 +80,11 @@ export const knowledge: KnowledgeEntry[] = [
     id: 'projects-overview',
     keywords: ['projects', 'work', 'portfolio', 'built', 'show me', 'examples', 'case'],
     answer:
-      "Here are Randulf's main projects:\n\n• **Barangay Lupon Admin & Database (2026)** — a complete case management system and admin dashboard for Barangay Camaman-an, now actively used.\n• **Automated Incident Detection and Assistance (2024 – Present)** — capstone-turned-startup; an AI-powered platform for incident detection and disaster response.\n• **Coffeenoy (2023)** — a mobile platform for coffee enthusiasts with community, discovery, and brewing tools.\n• **Telegram Crypto Bots (2023 – Present)** — real-time notification and command-based bots for crypto monitoring.\n• **Lawod: A Digital Fishing Companion (2023 – 2024)** — early-stage mobile marketplace for fishermen with an ocean-themed UI.\n\nAsk me about any of them for the deep-dive!",
+      "Here are Randulf's main projects:\n\n• **Automated Incident Detection and Assistance (AIDA · 2024 – Present)** — co-founded, award-winning AI platform for real-time incident detection across web and mobile.\n• **Barangay Lupon Admin & Database (2026)** — deployed case-management system for Barangay Camaman-an: dispute resolution, documents, audit trails, analytics.\n• **Polymarket 5-Min Bot — BTC · ETH · SOL (2025 – Present)** — open-source Python bot for Polymarket 5-minute crypto markets with an LLM-assisted strategy and a backtester.\n• **Hyperliquid Auto-Trading Bot (2025 – Present)** — personal Python bot that auto-executes trades on Hyperliquid, with a Telegram feed for fills, PnL, and kill-switch controls.\n• **Coffeenoy (2023)** — mobile platform for coffee enthusiasts: community, recipe discovery, and brewing guides.\n• **Lawod: A Digital Fishing Companion (2023 – 2024)** — early-stage mobile marketplace for Filipino fishermen with a custom ocean-themed UI.\n\nAsk me about any of them for the deep-dive!",
     followUps: [
+      'Tell me about AIDA',
+      'Tell me about the Polymarket bot',
       'Tell me about Barangay Lupon',
-      'Tell me about Automated Incident Detection',
-      'Tell me about Coffeenoy',
     ],
   },
   {
@@ -112,11 +112,18 @@ export const knowledge: KnowledgeEntry[] = [
     followUps: ['Tell me about Barangay Lupon', 'What other mobile apps have you built?'],
   },
   {
-    id: 'project-telegram-bots',
-    keywords: ['telegram', 'bot', 'bots', 'crypto', 'webhook', 'notification', 'notifications'],
+    id: 'project-hyperliquid-bot',
+    keywords: ['telegram', 'bot', 'bots', 'hyperliquid', 'trading', 'auto-trade', 'auto-trading'],
     answer:
-      "**Telegram Crypto Bots (2023 – Present)** are a set of **real-time notification and command-based bots** for crypto monitoring. Built with **Python, the Telegram Bot API, and webhooks** — Randulf keeps iterating on them with new alerts and commands.",
-    followUps: ['What other projects do you have?'],
+      "**Hyperliquid Auto-Trading Bot (2025 – Present)** is a personal-use Python bot that **auto-executes orders on Hyperliquid** based on Randulf's own strategy rules — position sizing, stop-loss / take-profit, and kill-switch controls all built in. A live **Telegram feed** broadcasts every signal, fill, and PnL update so he can monitor and override from anywhere. Always-on micro-service with reconnect and retry logic. Built with **Python, the Hyperliquid API, and the Telegram Bot API**.",
+    followUps: ['Tell me about the Polymarket bot', 'What other projects do you have?'],
+  },
+  {
+    id: 'project-polymarket-bot',
+    keywords: ['polymarket', 'prediction', 'market', 'markets', 'llm', 'backtest', 'backtester', '5-min', '5min', '5 minute', 'btc', 'eth', 'sol'],
+    answer:
+      "**Polymarket 5-Min Bot — BTC · ETH · SOL (2025 – Present)** is an **open-source Python bot** that participates in Polymarket's 5-minute prediction markets for the major crypto majors. It streams live price data over **websockets**, runs a tunable strategy with an **LLM-assisted decision step**, sizes positions through a risk module, and ships with a **backtester** for offline strategy validation. Code lives at **github.com/rfantonial15/Polymarket-BTC-ETH-SOL-5min-bot**.",
+    followUps: ['Tell me about the Hyperliquid bot', 'What other projects do you have?'],
   },
   {
     id: 'project-lawod',
@@ -174,7 +181,7 @@ export const knowledge: KnowledgeEntry[] = [
     id: 'experience',
     keywords: ['experience', 'worked', 'internship', 'job history', 'career', 'work history', 'background'],
     answer:
-      "Randulf has **4+ years of hands-on coding** across capstone, freelance, and post-grad work:\n\n• **Full Stack Developer — Automated Incident Detection and Assistance** (Capstone & Startup, 2024 – Present): built the web frontend and backend — admin dashboard, real-time reporting, and core APIs.\n• **Full Stack Developer — Barangay Lupon Digital Transformation** (Barangay Camaman-an, 2026): shipped a complete case management system now actively used by the barangay.\n• **Freelance Web & Mobile Developer** (Independent, 2023 – Present): web and mobile apps for local clients, plus custom Telegram bots for real-time logs and crypto monitoring.",
+      "Randulf has **4+ years of hands-on coding** across capstone, freelance, and startup work:\n\n• **Co-Founder & Full Stack Developer — AIDA** (2024 – Present): leads the web frontend and core backend APIs of an award-winning AI incident-response platform; secured a **₱100,000 grant** and placed in **7+ regional/international competitions**.\n• **Lead Full Stack Developer — Barangay Lupon Digital Transformation** (2026): shipped a deployed government case-management platform end-to-end with audit trails, RBAC, and an analytics layer.\n• **Freelance Web & Mobile Developer** (2023 – Present): production web and mobile apps for clients across the Philippines, plus personal Python trading bots (Hyperliquid auto-execution and a Polymarket 5-minute LLM-assisted strategy bot, 2025 – Present).",
     followUps: ['Show me your projects', 'What is your strongest skill?'],
   },
   {
@@ -188,7 +195,7 @@ export const knowledge: KnowledgeEntry[] = [
     id: 'soft-skills',
     keywords: ['soft', 'personality', 'team', 'teamwork', 'collaboration', 'introvert', 'work style', 'workstyle', 'remote', 'communicate', 'communication'],
     answer:
-      "Randulf is a **fast learner**, **problem solver**, and **detail-oriented** builder with an **ownership mindset** — independent and self-driven, with a strong team spirit when collaboration is needed.\n\nHe's an introvert who thrives in **deep, focused work**, and prefers **clear written communication and well-documented code**.",
+      "Randulf is a **fast learner**, **problem solver**, and **detail-oriented** builder with an **ownership mindset** — independent and self-driven, and a strong async communicator.\n\nHe thrives in **deep, focused work** with **clear written communication and well-documented code** — the kind of work style that travels well across remote, hybrid, and time-zone-spanning teams.",
     followUps: ['What is your strongest skill?', 'Are you available for hire?'],
   },
   {

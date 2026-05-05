@@ -220,9 +220,13 @@ export default function Hero() {
           {stats.map((s, i) => (
             <div
               key={s.label}
-              className={`py-5 ${
-                i === 0 ? '' : 'sm:border-l'
-              } ${i % 2 === 0 ? '' : 'border-l'} sm:border-l border-border sm:px-6`}
+              className={cn(
+                'py-5 sm:px-6',
+                // 2-col mobile: divide odd cells (i=1,3) with a left border.
+                i % 2 === 1 && 'border-l border-border',
+                // 4-col desktop: divide every cell except the first.
+                i > 0 && 'sm:border-l sm:border-border',
+              )}
             >
               <div className="font-display text-2xl sm:text-3xl font-semibold text-foreground">
                 {s.value}

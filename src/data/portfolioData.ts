@@ -17,10 +17,35 @@ import {
   Wrench,
   Zap,
 } from 'lucide-react';
+import AidaWebDashboard from '../assets/AIDA-Web-Dashboard.png';
+import AidaMobDashboard from '../assets/AIDA-Mob-Dashboard.png';
+import AidaMobAlert from '../assets/AIDA-Mob-Alert.png';
+import AidaMobReport from '../assets/AIDA-Mob-Report.png';
+import AidaMobSOS from '../assets/AIDA-Mob-SOS.png';
+import LawodIntro from '../assets/Lawod-Intro.png';
+import LawodLogin from '../assets/Lawod-Login.png';
+import LawodMarket from '../assets/Lawod-Market.png';
+import LuponDashboard from '../assets/Lupon-Dashboard.png';
+import LuponCaseRecord from '../assets/Lupon-CaseRecord.png';
+import LuponFreqRecord from '../assets/Lupon-FreqRecord.png';
+import LuponInputCase from '../assets/Lupon-InputCase.png';
+import LuponAnalytics1 from '../assets/Lupon-Analytics1.png';
+import LuponAnalytics2 from '../assets/Lupon-Analytics2.png';
+import CoffeenoyHome from '../assets/Coffeenoy.png';
+import CoffeenoyLogin from '../assets/CoffeenoyLogin.png';
+import CoffeenoyMaps from '../assets/CoffeenoyMaps.png';
+import CoffeenoyStep1 from '../assets/CoffeenoyStep1.png';
 
 export interface NavLink {
   id: string;
   label: string;
+}
+
+export interface ProjectScreenshot {
+  src: string;
+  caption: string;
+  /** 'mobile' = portrait phone mock, 'web' = landscape browser mock */
+  kind: 'mobile' | 'web';
 }
 
 export interface Project {
@@ -35,6 +60,9 @@ export interface Project {
   featured?: boolean;
   award?: string;
   links?: { label: string; href: string }[];
+  screenshots?: ProjectScreenshot[];
+  /** Stylized placeholder for projects with no traditional UI to screenshot. */
+  preview?: 'telegram-chat' | 'terminal-log';
 }
 
 export interface SkillGroup {
@@ -61,14 +89,16 @@ export interface SocialLink {
 export const profile = {
   name: 'Randulf Fantonial',
   firstName: 'Randulf',
-  title: 'Full Stack Developer',
+  title: 'Full Stack Developer · Co-Founder, AIDA',
   location: 'Cagayan de Oro, Philippines',
   email: 'fantonial.randulf9@gmail.com',
-  availability: 'Available for new opportunities',
-  tagline: 'Building exceptional digital experiences with code, creativity, and precision.',
-  about: `I care about the whole craft — clean architecture, sharp UX details, and shipping work that actually feels good to use.
+  availability: 'Open to new opportunities',
+  tagline: 'I build production web and mobile products end-to-end — from data model to the last UI detail — with React, React Native, Django, and PostgreSQL.',
+  about: `I'm a Full Stack Developer based in Cagayan de Oro, building production web and mobile products end-to-end with React, React Native, Django, and PostgreSQL. My work spans civic tech, real-time AI platforms, and the kind of polished product UIs that have to hold up under daily use.
 
-Most of my time goes into product UIs and developer-facing tools where iteration speed and quality both matter. I'm an introvert who thrives in deep, focused work, lean async, and treat polish as a default — not a stretch goal.`,
+I care about the whole craft — a normalized data model, the right abstraction at the right time, and the small UX details that make a product feel considered rather than assembled. I work best with high autonomy, tight feedback loops, and teams that treat polish as a default rather than a stretch goal.
+
+Right now I'm co-founding Automated Incident Detection and Assistance (AIDA) — taking my award-winning capstone to market — while leading a Barangay Lupon case-management platform and shipping freelance product work in parallel.`,
   resumeUrl: '/resume.pdf',
   // Drop your photo at /public/profile.jpg (or .png/.webp) and it will show in the Hero.
   avatarUrl: '/profile.jpg',
@@ -87,34 +117,35 @@ export const navLinks: NavLink[] = [
 
 export const stats = [
   { label: 'Years Coding', value: '4+' },
-  { label: 'Projects Shipped', value: '15+' },
-  { label: 'Stacks Mastered', value: '8+' },
+  { label: 'Products Shipped', value: '15+' },
+  { label: 'Awards & Wins', value: '8' },
+  { label: 'USTP', value: '2025' },
 ];
 
 export const experiences: Experience[] = [
   {
-    role: 'Full Stack Developer',
-    org: 'Automated Incident Detection and Assistance',
+    role: 'Co-Founder & Full Stack Developer',
+    org: 'Automated Incident Detection and Assistance (AIDA)',
     period: '2024 – Present',
     location: 'Cagayan de Oro, Philippines',
     bullets: [
-      'Owned the web frontend and core backend APIs on a multi-disciplinary capstone team.',
-      'Coordinated with teammates handling the AI models and mobile clients.',
-      'Now continuing the work as a co-founder taking the platform to market.',
+      'Co-founded a real-time AI incident-response platform spun out of an award-winning college capstone; now taking the product to market.',
+      'Lead the web frontend and core backend APIs, partnering with the AI and mobile teams to ship a unified detection pipeline across web and React Native.',
+      'Secured ₱100,000 in non-dilutive grant funding and placed in 7+ regional and international competitions, including 1st Place at SEA-CICSIC 2025 (Southeast Asia division).',
     ],
-    stack: ['React', 'TypeScript', 'Django REST Framework', 'PostgreSQL'],
+    stack: ['React', 'TypeScript', 'Django REST', 'PostgreSQL', 'React Native'],
   },
   {
-    role: 'Full Stack Developer',
+    role: 'Lead Full Stack Developer',
     org: 'Barangay Camaman-an — Lupon Digital Transformation',
     period: '2026',
     location: 'Cagayan de Oro, Philippines',
     bullets: [
-      'Led the platform end-to-end from data model to deployed UI.',
-      'Modeled a normalized PostgreSQL schema for cases, hearings, and documents.',
-      'Hand-rolled role-based access control and audit trails for compliance.',
+      'Designed and shipped a deployed case-management platform end-to-end — data model, API, admin UI, and analytics dashboard — for local dispute resolution.',
+      'Modeled a normalized PostgreSQL schema for cases, hearings, and documents with full audit trails to meet government compliance requirements.',
+      'Built role-based access control, document workflows, and an analytics layer that surfaces caseload, deadlines, and resolution rates.',
     ],
-    stack: ['React', 'TypeScript', 'Django REST Framework', 'PostgreSQL', 'Tailwind CSS'],
+    stack: ['React', 'TypeScript', 'Django REST', 'PostgreSQL', 'Tailwind CSS'],
   },
   {
     role: 'Freelance Web & Mobile Developer',
@@ -122,30 +153,14 @@ export const experiences: Experience[] = [
     period: '2023 – Present',
     location: 'Remote',
     bullets: [
-      'Shipped multiple web and mobile apps for clients across the Philippines.',
-      'Build and maintain custom Telegram automation bots for monitoring and alerts.',
+      'Shipped multiple production web and mobile apps for clients across the Philippines, owning everything from data model to deployment.',
+      'Build and operate personal Python trading bots — an automated Hyperliquid execution bot with Telegram-driven monitoring, and a Polymarket 5-minute strategy bot with LLM-assisted signals and a backtester (2025 – Present).',
     ],
     stack: ['React Native', 'Flutter', 'Next.js', 'Django', 'Firebase', 'Supabase', 'Python'],
   },
 ];
 
 export const projects: Project[] = [
-  {
-    slug: 'barangay-lupon',
-    name: 'Barangay Lupon Admin & Database',
-    year: '2026',
-    tagline: 'Case management OS for local dispute resolution.',
-    description:
-      'A complete case management system and admin dashboard for Barangay Lupon. Handles dispute resolution tracking, document management, a centralized case database, and the administrative features officials need to run day-to-day operations.',
-    highlights: [
-      'Dispute resolution tracking from intake through mediation.',
-      'Document management with secure storage and retrieval.',
-      'Centralized case database with fast search and filters.',
-      'Admin dashboard with roles, audit trails, and reporting.',
-    ],
-    stack: ['React', 'TypeScript', 'Django REST', 'PostgreSQL'],
-    tags: ['Full Stack', 'Gov Tech'],
-  },
   {
     slug: 'incident-detection',
     name: 'Automated Incident Detection and Assistance',
@@ -161,6 +176,77 @@ export const projects: Project[] = [
     ],
     stack: ['React Native', 'React.js', 'Django', 'PostgreSQL'],
     tags: ['Full Stack', 'AI', 'Mobile'],
+    screenshots: [
+      { src: AidaWebDashboard, caption: 'Admin Dashboard — incident overview', kind: 'web' },
+      { src: AidaMobDashboard, caption: 'Mobile Home — weather & quick actions', kind: 'mobile' },
+      { src: AidaMobAlert, caption: 'Real-time incident alerts', kind: 'mobile' },
+      { src: AidaMobReport, caption: 'Citizen incident reporting flow', kind: 'mobile' },
+      { src: AidaMobSOS, caption: 'One-tap SOS request', kind: 'mobile' },
+    ],
+  },
+  {
+    slug: 'barangay-lupon',
+    name: 'Barangay Lupon Admin & Database',
+    year: '2026',
+    tagline: 'Case management OS for local dispute resolution.',
+    description:
+      'A complete case management system and admin dashboard for Barangay Lupon. Handles dispute resolution tracking, document management, a centralized case database, and the administrative features officials need to run day-to-day operations.',
+    highlights: [
+      'Dispute resolution tracking from intake through mediation.',
+      'Document management with secure storage and retrieval.',
+      'Centralized case database with fast search and filters.',
+      'Admin dashboard with roles, audit trails, and reporting.',
+    ],
+    stack: ['React', 'TypeScript', 'Django REST', 'PostgreSQL'],
+    tags: ['Full Stack', 'Gov Tech'],
+    screenshots: [
+      { src: LuponDashboard, caption: 'Dashboard — case totals, status mix, and deadlines', kind: 'web' },
+      { src: LuponCaseRecord, caption: 'Case records with search and filters', kind: 'web' },
+      { src: LuponInputCase, caption: 'Structured case intake form', kind: 'web' },
+      { src: LuponFreqRecord, caption: 'Frequent records lookup', kind: 'web' },
+      { src: LuponAnalytics1, caption: 'Analytics — case nature & status breakdown', kind: 'web' },
+      { src: LuponAnalytics2, caption: 'Analytics — trends and deadlines', kind: 'web' },
+    ],
+  },
+  {
+    slug: 'polymarket-5min-bot',
+    name: 'Polymarket 5-Min Bot — BTC · ETH · SOL',
+    year: '2025 – Present',
+    tagline: 'Strategy + LLM-driven bot for Polymarket 5-minute crypto markets.',
+    description:
+      'A Python trading bot that participates in Polymarket\'s 5-minute BTC, ETH, and SOL prediction markets. It streams live price data over websockets, runs a configurable strategy with an LLM-assisted decision step, sizes positions through a risk module, and ships with a backtester for offline strategy validation.',
+    highlights: [
+      'Real-time websocket feed for BTC, ETH, and SOL with 5-minute resolution.',
+      'Strategy engine with a local-LLM decision step and tunable risk rules.',
+      'Backtester for replaying historical markets before going live.',
+      'Structured logging and metrics for every signal, trade, and PnL event.',
+    ],
+    stack: ['Python', 'Polymarket API', 'WebSockets', 'Local LLM', 'Backtesting'],
+    tags: ['Automation', 'Backend'],
+    preview: 'terminal-log',
+    links: [
+      {
+        label: 'View on GitHub',
+        href: 'https://github.com/rfantonial15/Polymarket-BTC-ETH-SOL-5min-bot',
+      },
+    ],
+  },
+  {
+    slug: 'telegram-crypto-bots',
+    name: 'Hyperliquid Auto-Trading Bot',
+    year: '2025 – Present',
+    tagline: 'Personal automated trading bot on Hyperliquid with Telegram alerts.',
+    description:
+      'A personal-use trading bot that executes orders automatically on Hyperliquid based on my own strategy rules, with Telegram as the live feed for fills, PnL and risk events — every signal, fill and circuit-breaker is wired through the same Telegram chat so I can monitor and override from anywhere.',
+    highlights: [
+      'Automated order execution on Hyperliquid via its API.',
+      'Strategy rules with position sizing and stop-loss / take-profit logic.',
+      'Live Telegram feed for fills, PnL updates and risk alerts.',
+      'Always-on micro-service with reconnect, retry and kill-switch controls.',
+    ],
+    stack: ['Python', 'Hyperliquid API', 'Telegram Bot API', 'Webhooks'],
+    tags: ['Automation', 'Backend'],
+    preview: 'telegram-chat',
   },
   {
     slug: 'coffeenoy',
@@ -177,22 +263,12 @@ export const projects: Project[] = [
     ],
     stack: ['React Native', 'Firebase', 'Node.js', 'Expo'],
     tags: ['Mobile', 'Community'],
-  },
-  {
-    slug: 'telegram-crypto-bots',
-    name: 'Telegram Crypto Bots',
-    year: '2023 – Present',
-    tagline: 'Real-time crypto monitoring via Telegram.',
-    description:
-      'A set of real-time notification and command-based Telegram bots for monitoring crypto markets. Continuously iterated since 2023 with new alerts, commands and webhook integrations.',
-    highlights: [
-      'Real-time price and event notifications.',
-      'Command-based interactions for queries and alerts.',
-      'Webhook integrations with external data sources.',
-      'Small, reliable, always-on micro-services.',
+    screenshots: [
+      { src: CoffeenoyHome, caption: 'Recipe feed — featured brews and quick actions', kind: 'mobile' },
+      { src: CoffeenoyStep1, caption: 'Recipe detail with step-by-step brewing guide', kind: 'mobile' },
+      { src: CoffeenoyMaps, caption: 'Discover nearby coffee shops', kind: 'mobile' },
+      { src: CoffeenoyLogin, caption: 'Login screen with custom imagery', kind: 'mobile' },
     ],
-    stack: ['Python', 'Telegram Bot API', 'Webhooks'],
-    tags: ['Automation', 'Backend'],
   },
   {
     slug: 'lawod',
@@ -209,6 +285,11 @@ export const projects: Project[] = [
     ],
     stack: ['Flutter', 'Firebase', 'Figma'],
     tags: ['Mobile', 'Marketplace'],
+    screenshots: [
+      { src: LawodIntro, caption: 'Onboarding intro screen', kind: 'mobile' },
+      { src: LawodLogin, caption: 'Login flow with custom illustrations', kind: 'mobile' },
+      { src: LawodMarket, caption: 'Marketplace with weather-aware fishing advisory', kind: 'mobile' },
+    ],
   },
 ];
 
@@ -234,9 +315,9 @@ export const skillGroups: SkillGroup[] = [
     skills: ['PostgreSQL', 'MySQL', 'MongoDB', 'Firebase', 'Supabase'],
   },
   {
-    name: 'Tools & Others',
+    name: 'Tooling',
     icon: Wrench,
-    skills: ['Git', 'Docker', 'Figma', 'CI/CD', 'Webhooks', 'Telegram Bot API'],
+    skills: ['Git', 'Docker', 'CI/CD', 'Figma', 'Webhooks', 'Telegram Bot API'],
   },
   {
     name: 'AI & Productivity',
@@ -255,7 +336,7 @@ export const softSkills = [
   { label: 'Detail-Oriented', icon: Globe },
   { label: 'Ownership Mindset', icon: Terminal },
   { label: 'Independent & Self-Driven', icon: Sparkles },
-  { label: 'Team Player (when needed)', icon: Layers },
+  { label: 'Strong Async Communicator', icon: Layers },
 ];
 
 export const education = {
@@ -266,7 +347,8 @@ export const education = {
   honor: 'Cum Laude',
   highlights: [
     'Graduated Cum Laude — top academic honor for sustained performance.',
-    'Capstone: Automated Incident Detection and Assistance — awarded Best Capstone Project.',
+    'Capstone: Automated Incident Detection and Assistance — awarded Best Capstone Project; now a co-founded startup.',
+    'Capstone work later took 1st Place at SEA-CICSIC 2025 (Southeast Asia division) and earned a ₱100,000 incubation grant.',
   ],
   coursework: [
     'Data Structures & Algorithms',
@@ -337,7 +419,7 @@ export const achievements: Achievement[] = [
 ];
 
 export const socials: SocialLink[] = [
-  { label: 'GitHub', href: 'https://github.com/', icon: Github },
+  { label: 'GitHub', href: 'https://github.com/rfantonial15', icon: Github },
   { label: 'LinkedIn', href: 'https://www.linkedin.com/in/randulf-fantonial-304922331', icon: Linkedin },
   { label: 'Email', href: 'mailto:fantonial.randulf9@gmail.com', icon: Mail },
 ];
