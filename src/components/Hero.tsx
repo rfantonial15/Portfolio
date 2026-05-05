@@ -215,23 +215,36 @@ export default function Hero() {
         {/* Stats */}
         <motion.div
           variants={item}
-          className="mt-16 grid grid-cols-2 sm:grid-cols-4 border-t border-border"
+          className="mt-16 grid grid-cols-2 sm:grid-cols-4 rounded-xl border border-border bg-card/40 backdrop-blur-sm overflow-hidden"
         >
           {stats.map((s, i) => (
             <div
               key={s.label}
               className={cn(
-                'py-5 sm:px-6',
+                'group relative p-5 sm:p-6 transition-colors hover:bg-muted/30',
                 // 2-col mobile: divide odd cells (i=1,3) with a left border.
                 i % 2 === 1 && 'border-l border-border',
+                // mobile: 2nd row gets a top border to separate the rows.
+                i >= 2 && 'border-t border-border sm:border-t-0',
                 // 4-col desktop: divide every cell except the first.
                 i > 0 && 'sm:border-l sm:border-border',
               )}
             >
-              <div className="font-display text-2xl sm:text-3xl font-semibold text-foreground">
+              <div className="flex items-center justify-between">
+                <span className="grid place-items-center h-8 w-8 rounded-md bg-foreground/[0.04] dark:bg-foreground/[0.06] text-foreground/70 transition-colors group-hover:text-foreground">
+                  <s.icon className="h-4 w-4" />
+                </span>
+                <span className="text-[10px] font-medium uppercase tracking-[0.16em] text-muted-foreground/70">
+                  {String(i + 1).padStart(2, '0')}
+                </span>
+              </div>
+
+              <div className="mt-4 font-display text-3xl sm:text-[2.25rem] font-semibold leading-none tracking-tight text-foreground">
                 {s.value}
               </div>
-              <div className="mt-1 text-xs text-muted-foreground">{s.label}</div>
+              <div className="mt-2 text-[11px] sm:text-xs font-medium text-muted-foreground leading-snug">
+                {s.label}
+              </div>
             </div>
           ))}
         </motion.div>

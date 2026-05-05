@@ -2,18 +2,22 @@ import type { ComponentType } from 'react';
 import {
   Atom,
   BrainCircuit,
+  Code,
   Code2,
   Database,
   Github,
   Globe,
+  GraduationCap,
   Layers,
   Linkedin,
   Mail,
   MapPin,
+  Rocket,
   Server,
   Smartphone,
   Sparkles,
   Terminal,
+  Trophy,
   Wrench,
   Zap,
 } from 'lucide-react';
@@ -99,7 +103,7 @@ export const profile = {
 I care about the whole craft — a normalized data model, the right abstraction at the right time, and the small UX details that make a product feel considered rather than assembled. I work best with high autonomy, tight feedback loops, and teams that treat polish as a default rather than a stretch goal.
 
 Right now I'm co-founding Automated Incident Detection and Assistance (AIDA) — taking my award-winning capstone to market — while leading a Barangay Lupon case-management platform and shipping freelance product work in parallel.`,
-  resumeUrl: '/resume.pdf',
+  resumeUrl: '/rfantonialResume.pdf',
   // Drop your photo at /public/profile.jpg (or .png/.webp) and it will show in the Hero.
   avatarUrl: '/profile.jpg',
 };
@@ -115,11 +119,11 @@ export const navLinks: NavLink[] = [
   { id: 'contact', label: 'Contact' },
 ];
 
-export const stats = [
-  { label: 'Years Coding', value: '4+' },
-  { label: 'Products Shipped', value: '15+' },
-  { label: 'Awards & Wins', value: '8' },
-  { label: 'USTP', value: '2025' },
+export const stats: { label: string; value: string; icon: ComponentType<{ className?: string }> }[] = [
+  { label: 'Years Coding', value: '4+', icon: Code },
+  { label: 'Products Shipped', value: '15+', icon: Rocket },
+  { label: 'Awards & Wins', value: '8', icon: Trophy },
+  { label: 'USTP', value: '2025', icon: GraduationCap },
 ];
 
 export const experiences: Experience[] = [
