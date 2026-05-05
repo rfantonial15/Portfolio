@@ -46,8 +46,12 @@ export default function Navbar({ active, theme, onToggleTheme }: NavbarProps) {
               onClick={() => handleNav('home')}
               className="group flex items-center gap-2 pr-2"
             >
-              <span className="h-7 w-7 grid place-items-center rounded-md bg-foreground text-background font-display font-bold text-sm">
-                R
+              <span className="grid place-items-center h-9 w-9 rounded-lg bg-foreground/[0.04] dark:bg-white ring-1 ring-border dark:ring-white/40 transition-colors">
+                <img
+                  src="/logo.png"
+                  alt="RF Logo"
+                  className="h-7 w-7 object-contain"
+                />
               </span>
               <span className="hidden sm:block text-sm font-medium">
                 {profile.firstName} Fantonial
