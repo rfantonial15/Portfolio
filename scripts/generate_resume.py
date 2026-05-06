@@ -358,7 +358,7 @@ def build():
             "period": "2024 - Present",
             "loc": "Cagayan de Oro, Philippines",
             "bullets": [
-                f"Co-founded an AI incident-response platform — took 1st Place at SEA-CICSIC 2025 (Southeast Asia), placed in 7+ regional/international competitions, and secured {PESO}100,000 in non-dilutive grant funding.",
+                "Co-founded an AI incident-response platform — took 1st Place at SEA-CICSIC 2025 (Southeast Asia), National Champion at the PCCI Business Idea Development Award 2024, and placed in 7+ regional/international pitch competitions.",
                 "Drove the product from research demo to a deployable platform now being taken to market, leading the web frontend and core APIs across web and React Native.",
                 "Aligned a multi-disciplinary AI / mobile / web team behind a single real-time detection pipeline, unblocking faster iteration on every surface.",
             ],
@@ -406,8 +406,7 @@ def build():
         {
             "name": "Automated Incident Detection and Assistance (AIDA)",
             "year": "2024 - Present",
-            "desc": "Award-winning AI incident-response platform spanning web admin and React Native mobile clients. Best Capstone Project; 1st Place at SEA-CICSIC 2025 (Southeast Asia); "
-                    f"{PESO}100,000 incubation grant.",
+            "desc": "Award-winning AI incident-response platform spanning web admin and React Native mobile clients. Best Capstone Project; 1st Place at SEA-CICSIC 2025 (Southeast Asia); recognized across 7+ regional and international pitch competitions.",
         },
         {
             "name": "Barangay Lupon Admin & Database",
@@ -492,7 +491,9 @@ def build():
         Paragraph(
             "Capstone: Automated Incident Detection and Assistance &mdash; "
             "awarded Best Capstone Project; later took 1st Place at SEA-CICSIC 2025 "
-            f"(Southeast Asia division) and earned a {PESO}100,000 incubation grant.",
+            "(Southeast Asia division), National Champion at the PCCI Business Idea "
+            "Development Award 2024, and Overall Best Poster at Lambigit 2025 "
+            "(N. Mindanao Research Innovation Summit).",
             small_style,
         ),
     ]

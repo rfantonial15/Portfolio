@@ -352,7 +352,7 @@ export const education = {
   highlights: [
     'Graduated Cum Laude — top academic honor for sustained performance.',
     'Capstone: Automated Incident Detection and Assistance — awarded Best Capstone Project; now a co-founded startup.',
-    'Capstone work later took 1st Place at SEA-CICSIC 2025 (Southeast Asia division) and earned a ₱100,000 incubation grant.',
+    'Capstone work later took 1st Place at SEA-CICSIC 2025 (Southeast Asia division) and National Champion at the PCCI Business Idea Development Award 2024.',
   ],
   coursework: [
     'Data Structures & Algorithms',
@@ -403,8 +403,8 @@ export const achievements: Achievement[] = [
     project: 'Automated Incident Detection and Assistance',
   },
   {
-    title: 'Business Idea Development Award 2024',
-    rank: 'Champion',
+    title: 'PCCI Business Idea Development Award 2024 (National)',
+    rank: 'National Champion',
     date: 'October 2024',
     project: 'Automated Incident Detection and Assistance',
   },
